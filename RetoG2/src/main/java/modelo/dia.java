@@ -9,7 +9,7 @@ public class dia {
 	
 	public dia(String diaSem, int num, int horas) {
 		super();
-		this.diaSem = diaSem;
+		this.diaSem = diaSem; 
 		this.num = num;
 		this.horas = horas;
 	}

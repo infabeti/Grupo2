@@ -37,6 +37,5 @@ public class VentanaLogin extends JPanel {
 		textField_1.setColumns(10);
 		textField_1.setBounds(176, 222, 145, 20);
 		add(textField_1);
-
 	}
 }

@@ -25,4 +25,6 @@ public class VentanaInicio extends JPanel {
 		lblNewLabel.setBounds(124, 159, 360, 134);
 		add(lblNewLabel);
 	}
+	
+
 }

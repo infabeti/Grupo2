@@ -4,6 +4,9 @@
 package RetoG2;
 
 import org.junit.Test;
+
+import modelo.Library;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {

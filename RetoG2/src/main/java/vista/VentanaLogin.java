@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaLogin extends JPanel {
 	private JTextField txtFUser;
@@ -45,14 +47,14 @@ public class VentanaLogin extends JPanel {
 		txtFContr.setBounds(176, 218, 192, 24);
 		add(txtFContr);
 		
-		JButton btnAtras = new JButton("<--");
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAtras.setBounds(125, 418, 89, 29);
-		add(btnAtras);
-		
 		JButton btnAceptar = new JButton("-->");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAceptar.setBounds(320, 418, 89, 29);
+		btnAceptar.setBounds(210, 417, 89, 29);
 		add(btnAceptar);
 		
 		JLabel lblDia = new JLabel("D\u00EDa:");

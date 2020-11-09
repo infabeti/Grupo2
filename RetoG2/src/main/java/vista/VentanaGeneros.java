@@ -16,6 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 
+import controlador.*;
+
 public class VentanaGeneros extends JPanel {
 	
 	private Date hrsSabado;
@@ -40,6 +42,7 @@ public class VentanaGeneros extends JPanel {
 		simpleDateFormat = new SimpleDateFormat(patternH);
 		ShrsSabado = simpleDateFormat.format(hrsSabado);
 		ShrsDomingo = simpleDateFormat.format(hrsDomingo);
+
 		
 		
 		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, Color.CYAN, new Color(0, 255, 255), Color.CYAN, Color.CYAN));
@@ -48,11 +51,7 @@ public class VentanaGeneros extends JPanel {
 		
 		JComboBox cmbxOpc = new JComboBox();
 		cmbxOpc.setBounds(257, 72, 117, 22);
-		cmbxOpc.addItem(1);
-		cmbxOpc.addItem(2);
-		cmbxOpc.addItem(3);
-		cmbxOpc.addItem(4);
-		cmbxOpc.addItem(0);
+		metodos.llenarCmbxOpc1(cmbxOpc);
 		add(cmbxOpc);
 		
 		JLabel lblOpc = new JLabel("Elige una opcion:");
@@ -68,6 +67,7 @@ public class VentanaGeneros extends JPanel {
 		JButton btnAceptar = new JButton("-->");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				metodos.pasarDatosGeneros();
 				cmbxOpc.getSelectedItem();
 			}
 		});

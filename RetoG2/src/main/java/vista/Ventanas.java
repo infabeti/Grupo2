@@ -17,7 +17,7 @@ public class Ventanas extends JFrame {
 	 */
 	public Ventanas() {
 		frame = new JFrame();
-		frame.setBounds(150, 150, 430, 525);
+		frame.setBounds(150, 150, 540, 565);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}

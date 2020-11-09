@@ -18,12 +18,12 @@ public class VentanaInicio extends JPanel {
 	public VentanaInicio() throws InterruptedException {
 		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, Color.CYAN, new Color(0, 255, 255), Color.CYAN, Color.CYAN));
 		setLayout(null);
-		setBounds(150, 150, 430, 525);
+		setBounds(150, 150, 530, 505);
 		
-		JLabel lblNewLabel = new JLabel("BIENVENIDO");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		lblNewLabel.setBounds(124, 159, 360, 134);
-		add(lblNewLabel);
+		JLabel lblBienvenido = new JLabel("BIENVENIDO");
+		lblBienvenido.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		lblBienvenido.setBounds(101, 173, 360, 134);
+		add(lblBienvenido);
 	}
 	
 

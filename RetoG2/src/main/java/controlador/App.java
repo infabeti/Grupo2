@@ -9,6 +9,7 @@ public class App {
 			Ventanas frame = new Ventanas();
 			VentanaInicio pan = new VentanaInicio();
 			Ventanas.cambiarVentana(pan);
+			CambiosDeVentana.cambioInicioLogin();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

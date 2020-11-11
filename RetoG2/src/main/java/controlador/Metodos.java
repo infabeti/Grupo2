@@ -4,12 +4,13 @@ import javax.swing.JComboBox;
 import modelo.*;
 import vista.*;
 
-public class metodos {
+public class Metodos {
 	
 	private String nombre;
 	private String contraseña;
 	
 	public boolean comprobarLogIn(String nom, String contr) {
+		Usuario user = new Usuario("pepe", "123");
 		nombre = "pepe";
 		contraseña = "pepe123";
 		if (!nom.equals(nombre) || !contr.equals(contraseña)) {

@@ -1,14 +1,13 @@
 package modelo;
 
-public class pelicula {
+public class Pelicula {
 	private String titulo;
 	private int duracionMins;
 	private String genero;
 	
 	
 	
-	public pelicula(String titulo, int duracionMins, String genero) {
-		super();
+	public Pelicula(String titulo, int duracionMins, String genero) {
 		this.titulo = titulo;
 		this.duracionMins = duracionMins;
 		this.genero = genero;

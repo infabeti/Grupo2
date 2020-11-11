@@ -51,7 +51,7 @@ public class VentanaGeneros extends JPanel {
 		
 		JComboBox cmbxOpc = new JComboBox();
 		cmbxOpc.setBounds(257, 72, 117, 22);
-		metodos.llenarCmbxOpc1(cmbxOpc);
+		Metodos.llenarCmbxOpc1(cmbxOpc);
 		add(cmbxOpc);
 		
 		JLabel lblOpc = new JLabel("Elige una opcion:");
@@ -67,7 +67,7 @@ public class VentanaGeneros extends JPanel {
 		JButton btnAceptar = new JButton("-->");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				metodos.pasarDatosGeneros();
+				Metodos.pasarDatosGeneros();
 				cmbxOpc.getSelectedItem();
 			}
 		});

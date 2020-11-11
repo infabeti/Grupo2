@@ -1,63 +1,56 @@
 package modelo;
 
+import java.util.Date;
+
 public class Pelicula {
 	private String titulo;
-	private int duracionMins;
+	private Date duracion;
 	private String genero;
-	
-	
-	
-	public Pelicula(String titulo, int duracionMins, String genero) {
+	private boolean elegida;
+
+	public Pelicula(String titulo, Date duracion, String genero, boolean elegida) {
 		this.titulo = titulo;
-		this.duracionMins = duracionMins;
+		this.duracion = duracion;
 		this.genero = genero;
+		this.elegida = elegida;
 	}
-
-
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-
-
-	public int getDuracionMins() {
-		return duracionMins;
+	public Date getDuracion() {
+		return duracion;
 	}
 
-
-
-	public void setDuracionMins(int duracionMins) {
-		this.duracionMins = duracionMins;
+	public void setDuracion(Date duracion) {
+		this.duracion = duracion;
 	}
-
-
 
 	public String getGenero() {
 		return genero;
 	}
 
-
-
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 
+	public boolean isElegida() {
+		return elegida;
+	}
 
+	public void setElegida(boolean elegida) {
+		this.elegida = elegida;
+	}
 
 	@Override
 	public String toString() {
-		return "pelicula [titulo=" + titulo + ", duracionMins=" + duracionMins + ", genero=" + genero + "]";
+		return "Pelicula [titulo=" + titulo + ", duracion=" + duracion + ", genero=" + genero + ", elegida=" + elegida
+				+ "]";
 	}
-	
-	
-	
-
 
 }

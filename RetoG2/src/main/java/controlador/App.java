@@ -6,6 +6,7 @@ public class App {
 
 	public static void main(String[] args) {
 		try {
+			Metodos.crearDias();
 			Ventanas frame = new Ventanas();
 			VentanaInicio pan = new VentanaInicio();
 			Ventanas.cambiarVentana(pan);

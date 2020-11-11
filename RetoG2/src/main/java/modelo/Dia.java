@@ -1,16 +1,17 @@
 package modelo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Dia {
 	private String diaSem;
-	private String[] peliculas;
-	private int horas;
-	
-	public Dia(String diaSem, String[] peliculas, int horas) {
+	private ArrayList<Pelicula> peliculas;
+	private Date tiempoRestante;
+
+	public Dia(String diaSem, ArrayList<Pelicula> peliculas, Date tiempoRestante) {
 		this.diaSem = diaSem;
 		this.peliculas = peliculas;
-		this.horas = horas;
+		this.tiempoRestante = tiempoRestante;
 	}
 
 	public String getDiaSem() {
@@ -21,25 +22,25 @@ public class Dia {
 		this.diaSem = diaSem;
 	}
 
-	public String[] getPeliculas() {
+	public ArrayList<Pelicula> getPeliculas() {
 		return peliculas;
 	}
 
-	public void setPeliculas(String[] peliculas) {
+	public void setPeliculas(ArrayList<Pelicula> peliculas) {
 		this.peliculas = peliculas;
 	}
 
-	public int getHoras() {
-		return horas;
+	public Date getTiempoRestante() {
+		return tiempoRestante;
 	}
 
-	public void setHoras(int horas) {
-		this.horas = horas;
+	public void setTiempoRestante(Date tiempoRestante) {
+		this.tiempoRestante = tiempoRestante;
 	}
 
 	@Override
 	public String toString() {
-		return "Dia [diaSem=" + diaSem + ", peliculas=" + Arrays.toString(peliculas) + ", horas=" + horas + "]";
+		return "Dia [diaSem=" + diaSem + ", peliculas=" + peliculas + ", tiempoRestante=" + tiempoRestante + "]";
 	}
 
 }

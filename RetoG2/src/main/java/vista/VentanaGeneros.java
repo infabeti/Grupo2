@@ -94,8 +94,8 @@ public class VentanaGeneros extends JPanel {
 
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CambiosDeVentana.cambioAPelis();
 				Metodos.pasarOpc1((int)cmbxOpc.getSelectedItem());
+				CambiosDeVentana.cambioAPelis();
 			}
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 17));

@@ -7,6 +7,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 
 import controlador.CambiosDeVentana;
+import controlador.Metodos;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -35,18 +36,10 @@ public class VentanaPelis extends JPanel {
 		lblOpc = new JLabel("Elige una opcion:");
 		txtAPelis = new JTextArea();
 		btnAtras = new JButton("<--");
-		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				CambiosDeVentana.cambioAGeneros();
-			}
-		});
 		btnAceptar = new JButton("-->");
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				CambiosDeVentana.cambioAResumen();
-			}
-		});
 		cmbxOpc = new JComboBox();
+		
+		txtAPelis = Metodos.cargarPelis(txtAPelis);
 
 		cmbxOpc.setBounds(255, 68, 117, 22);
 		add(cmbxOpc);
@@ -55,15 +48,26 @@ public class VentanaPelis extends JPanel {
 		lblOpc.setBounds(111, 68, 134, 22);
 		add(lblOpc);
 
+		txtAPelis.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtAPelis.setBounds(46, 133, 431, 248);
 		add(txtAPelis);
 
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAtras.setBounds(128, 432, 89, 29);
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CambiosDeVentana.cambioAGeneros();
+			}
+		});
 		add(btnAtras);
 
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAceptar.setBounds(323, 432, 89, 29);
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CambiosDeVentana.cambioAResumen();
+			}
+		});
 		add(btnAceptar);
 
 	}

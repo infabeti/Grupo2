@@ -18,6 +18,7 @@ public class Metodos {
 	private static String NDia;
 	private static int opcGen;
 	private static int opcPeli;
+	private static ArrayList<String> generosRestantes;
 
 	public static boolean comprobarLogIn(String nom, String contr) {
 		Usuario user = new Usuario("pepe", "123");
@@ -41,7 +42,7 @@ public class Metodos {
 	public static void llenarPelis() {
 		peliculas = new ArrayList<Pelicula>();
 		Date duracion = new Date();
-		
+
 		duracion.setHours(1);
 		duracion.setMinutes(56);
 		Pelicula peli = new Pelicula("Handia", duracion, "Drama", false);
@@ -116,6 +117,7 @@ public class Metodos {
 	}
 
 	public static JTextArea llenarGeneros(JTextArea txtAGeneros) {
+		generosRestantes = new ArrayList<String>();
 		boolean dramaVal = false;
 		boolean sciVal = false;
 		boolean comVal = false;
@@ -131,25 +133,25 @@ public class Metodos {
 				if (sabado.getPeliculas().get(i).isElegida()) {
 					if (sabado.getPeliculas().get(i).getGenero().equals(generos[0])) {
 						dramaVal = true;
-					}else if (sabado.getPeliculas().get(i).getGenero().equals(generos[1])) {
+					} else if (sabado.getPeliculas().get(i).getGenero().equals(generos[1])) {
 						sciVal = true;
-					}else if (sabado.getPeliculas().get(i).getGenero().equals(generos[2])) {
+					} else if (sabado.getPeliculas().get(i).getGenero().equals(generos[2])) {
 						comVal = true;
-					}else if (sabado.getPeliculas().get(i).getGenero().equals(generos[3])) {
+					} else if (sabado.getPeliculas().get(i).getGenero().equals(generos[3])) {
 						terrVal = true;
 					}
 				}
 			}
-		}else {
+		} else {
 			for (int i = 0; i < domingo.getPeliculas().size(); i++) {
 				if (domingo.getPeliculas().get(i).isElegida()) {
 					if (domingo.getPeliculas().get(i).getGenero().equals(generos[0])) {
 						dramaVal = true;
-					}else if (domingo.getPeliculas().get(i).getGenero().equals(generos[1])) {
+					} else if (domingo.getPeliculas().get(i).getGenero().equals(generos[1])) {
 						sciVal = true;
-					}else if (domingo.getPeliculas().get(i).getGenero().equals(generos[2])) {
+					} else if (domingo.getPeliculas().get(i).getGenero().equals(generos[2])) {
 						comVal = true;
-					}else if (domingo.getPeliculas().get(i).getGenero().equals(generos[3])) {
+					} else if (domingo.getPeliculas().get(i).getGenero().equals(generos[3])) {
 						terrVal = true;
 					}
 				}
@@ -157,27 +159,31 @@ public class Metodos {
 		}
 		if (!dramaVal) {
 			txtAGeneros.append(cont + ". " + generos[0] + "\n");
+			generosRestantes.add(generos[0]);
 			cont++;
 		}
 		if (!sciVal) {
 			txtAGeneros.append(cont + ". " + generos[1] + "\n");
+			generosRestantes.add(generos[1]);
 			cont++;
 		}
 		if (!comVal) {
 			txtAGeneros.append(cont + ". " + generos[2] + "\n");
+			generosRestantes.add(generos[2]);
 			cont++;
 		}
 		if (!terrVal) {
 			txtAGeneros.append(cont + ". " + generos[3] + "\n");
+			generosRestantes.add(generos[3]);
 			cont++;
 		}
 		txtAGeneros.append("0. Salir");
 		return txtAGeneros;
 
 	}
-	
+
 	public static JTextArea sacarPelis(JTextArea txtASeleccionadas) {
-		
+
 		for (int i = 0; i < sabado.getPeliculas().size(); i++) {
 			if (sabado.getPeliculas().get(i).isElegida()) {
 				txtASeleccionadas.append(sabado.getPeliculas().get(i).getTitulo() + "\n");
@@ -204,19 +210,28 @@ public class Metodos {
 		return cmbxOpc;
 	}
 
-	public static void pasarOpc1(int opcionGeneros) {
-		if (opcionGeneros != 0) {
-			opcGen = opcionGeneros;
-		}else {
-			System.exit(0);
+	public static JTextArea cargarPelis(JTextArea txtAPelis) {
+		int cont = 1;
+		int suma = 0;
+		for (int i = 0; i < generosRestantes.size(); i++) {
+			for (int j = 0; j < peliculas.size(); j++) {
+				suma = i+1;
+				if (peliculas.get(j).getGenero() == generosRestantes.get(i) && !peliculas.get(i).isElegida() && suma == opcGen) {
+					txtAPelis.append(cont + ". " + peliculas.get(j).getTitulo() + "\n");
+					cont++;
+				}
+			}
 		}
-		
-	}
-	
-	public static void pasarOpc2(int opcionesPelis) {
-		
+		txtAPelis.append("0. Salir");
+		return txtAPelis;
 	}
 
-	
+	public static void pasarOpc2(int opcionesPelis) {
+
+	}
+
+	public static void pasarOpc1(int selectedItem) {
+		opcGen = selectedItem;
+	}
 
 }

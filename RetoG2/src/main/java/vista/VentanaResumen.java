@@ -57,6 +57,7 @@ public class VentanaResumen extends JPanel {
 		add(lblResumen);
 
 		txtAResumen.setBounds(68, 100, 390, 278);
+		txtAResumen.setEditable(false);
 		add(txtAResumen);
 		
 		btnGeneros.setFont(new Font("Tahoma", Font.PLAIN, 17));

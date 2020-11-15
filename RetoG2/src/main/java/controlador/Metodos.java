@@ -250,19 +250,42 @@ public class Metodos {
 				cont++;
 			}
 		}
-		
+
 		txtAGeneros.append("0. Salir");
 		return txtAGeneros;
 
 	}
 
 	public static String calcularHorasSabado() {
-		return "Sabado: " + tiempoRestantesSabado.get(Calendar.HOUR) + ":" + tiempoRestantesSabado.get(Calendar.MINUTE);
+		String res = "";
+		String hrs = "";
+		String mins = "";
+		if (tiempoRestantesSabado.get(Calendar.HOUR) < 10) {
+			hrs = "0" + tiempoRestantesSabado.get(Calendar.HOUR);
+		}else
+			hrs = tiempoRestantesSabado.get(Calendar.HOUR) + "";
+		if (tiempoRestantesSabado.get(Calendar.MINUTE) < 10) {
+			mins = "0" + tiempoRestantesSabado.get(Calendar.MINUTE);
+		}else
+			mins = "" + tiempoRestantesSabado.get(Calendar.MINUTE);
+		res = "Sabado: " + hrs + ":" + mins;
+		return res;
 	}
 
 	public static String calcularHorasDomingo() {
-		return "Domingo: " + tiempoRestantesDomingo.get(Calendar.HOUR) + ":"
-				+ tiempoRestantesDomingo.get(Calendar.MINUTE);
+		String res = "";
+		String hrs = "";
+		String mins = "";
+		if (tiempoRestantesDomingo.get(Calendar.HOUR) < 10) {
+			hrs = "0" + tiempoRestantesDomingo.get(Calendar.HOUR);
+		}else
+			hrs = tiempoRestantesDomingo.get(Calendar.HOUR) + "";
+		if (tiempoRestantesDomingo.get(Calendar.MINUTE) < 10) {
+			mins = "0" + tiempoRestantesDomingo.get(Calendar.MINUTE);
+		}else
+			mins = "" + tiempoRestantesDomingo.get(Calendar.MINUTE);
+		res = "Domingo: " + hrs + ":" + mins;
+		return res;
 	}
 
 	public static JTextArea sacarPelis(JTextArea txtASeleccionadas) {// rellena el textArea de las pelis
@@ -279,7 +302,7 @@ public class Metodos {
 				}
 			}
 		}
-		
+
 		return txtASeleccionadas;
 	}
 
@@ -294,6 +317,13 @@ public class Metodos {
 			}
 		}
 		return cmbxOpc;
+	}
+
+	public static void pasarOpc1(int selectedItem) {
+		if (selectedItem == 0) {
+			System.exit(0);
+		}
+		opcGen = selectedItem;
 	}
 
 	public static JTextArea cargarPelis(JTextArea txtAPelis) {
@@ -323,13 +353,9 @@ public class Metodos {
 				}
 			}
 		}
-		
+
 		txtAPelis.append("0. Salir");
 		return txtAPelis;
-	}
-
-	public static void pasarOpc1(int selectedItem) {
-		opcGen = selectedItem;
 	}
 
 	public static JComboBox llenarCmbxOpc2(JComboBox cmbxOpc) {
@@ -342,13 +368,14 @@ public class Metodos {
 	}
 
 	public static void seleccionarPeli(int opcion) {
+		if (opcion == 0) {
+			System.exit(0);
+		}
 		String genero = "";
 		String nombrePeliSeleccionada = "";
 		Pelicula peliculasGenero[] = new Pelicula[4];
 		int cont = 0;
 		int hrsPeli = 0;
-		System.out.println(NDia);
-		
 
 		if (NDia.equals("Sabado")) {
 			genero = generosRestantesSabado.get(opcGen - 1);
@@ -360,18 +387,31 @@ public class Metodos {
 			}
 			nombrePeliSeleccionada = peliculasGenero[opcion - 1].getTitulo();
 			for (int i = 0; i < peliculasSabado.size(); i++) {
-				if (peliculasSabado.get(i).getTitulo().equals(nombrePeliSeleccionada) && peliculasSabado.get(i).getDia().equals("Sabado")) {
-					peliculasSabado.get(i).setElegida(true);
+				if (peliculasSabado.get(i).getTitulo().equals(nombrePeliSeleccionada)
+						&& peliculasSabado.get(i).getDia().equals("Sabado")) {
 					hrsPeli = peliculasSabado.get(i).getDuracion().getHours();
 					if (hrsPeli < tiempoRestantesSabado.get(Calendar.HOUR)) {
+						peliculasSabado.get(i).setElegida(true);
 						tiempoRestantesSabado.add(Calendar.HOUR, -(hrsPeli));
-						tiempoRestantesSabado.add(Calendar.MINUTE, -(peliculasSabado.get(i).getDuracion().getMinutes()));
-					}
-					for (int j = 0; j < generosRestantesSabado.size(); j++) {
-						if (peliculasSabado.get(i).getGenero().equals(generosRestantesSabado.get(j))) {
-							generosRestantesSabado.remove(j);
+						tiempoRestantesSabado.add(Calendar.MINUTE,
+								-(peliculasSabado.get(i).getDuracion().getMinutes()));
+						for (int j = 0; j < generosRestantesSabado.size(); j++) {
+							if (peliculasSabado.get(i).getGenero().equals(generosRestantesSabado.get(j))) {
+								generosRestantesSabado.remove(j);
+							}
+						}
+					} else {
+						peliculasDomingo.get(i).setElegida(true);
+						tiempoRestantesDomingo.add(Calendar.HOUR, -(hrsPeli));
+						tiempoRestantesDomingo.add(Calendar.MINUTE,
+								-(peliculasDomingo.get(i).getDuracion().getMinutes()));
+						for (int j = 0; j < generosRestantesDomingo.size(); j++) {
+							if (peliculasDomingo.get(i).getGenero().equals(generosRestantesDomingo.get(j))) {
+								generosRestantesDomingo.remove(j);
+							}
 						}
 					}
+
 				}
 			}
 		} else {
@@ -384,22 +424,35 @@ public class Metodos {
 			}
 			nombrePeliSeleccionada = peliculasGenero[opcion - 1].getTitulo();
 			for (int i = 0; i < peliculasDomingo.size(); i++) {
-				if (peliculasDomingo.get(i).getTitulo().equals(nombrePeliSeleccionada) && peliculasDomingo.get(i).getDia().equals("Domingo")) {
-					peliculasDomingo.get(i).setElegida(true);
+				if (peliculasDomingo.get(i).getTitulo().equals(nombrePeliSeleccionada)
+						&& peliculasDomingo.get(i).getDia().equals("Domingo")) {
 					hrsPeli = peliculasDomingo.get(i).getDuracion().getHours();
 					if (hrsPeli < tiempoRestantesDomingo.get(Calendar.HOUR)) {
+						peliculasDomingo.get(i).setElegida(true);
 						tiempoRestantesDomingo.add(Calendar.HOUR, -(hrsPeli));
-						tiempoRestantesDomingo.add(Calendar.MINUTE, -(peliculasDomingo.get(i).getDuracion().getMinutes()));
-					}
-					for (int j = 0; j < generosRestantesDomingo.size(); j++) {
-						if (peliculasDomingo.get(i).getGenero().equals(generosRestantesDomingo.get(j))) {
-							generosRestantesDomingo.remove(j);
+						tiempoRestantesDomingo.add(Calendar.MINUTE,
+								-(peliculasDomingo.get(i).getDuracion().getMinutes()));
+						for (int j = 0; j < generosRestantesDomingo.size(); j++) {
+							if (peliculasDomingo.get(i).getGenero().equals(generosRestantesDomingo.get(j))) {
+								generosRestantesDomingo.remove(j);
+							}
+						}
+					} else if (hrsPeli < tiempoRestantesSabado.get(Calendar.HOUR)) {
+						peliculasSabado.get(i).setElegida(true);
+						tiempoRestantesSabado.add(Calendar.HOUR, -(hrsPeli));
+						tiempoRestantesSabado.add(Calendar.MINUTE,
+								-(peliculasSabado.get(i).getDuracion().getMinutes()));
+						for (int j = 0; j < generosRestantesDomingo.size(); j++) {
+							if (peliculasDomingo.get(i).getGenero().equals(generosRestantesDomingo.get(j))) {
+								generosRestantesDomingo.remove(j);
+							}
 						}
 					}
+
 				}
 			}
 		}
-		
+
 	}
 
 	public static JTextArea llenarResumen(JTextArea txtAResumen) {

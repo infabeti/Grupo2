@@ -51,6 +51,7 @@ public class VentanaPelis extends JPanel {
 
 		txtAPelis.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtAPelis.setBounds(46, 133, 431, 248);
+		txtAPelis.setEditable(false);
 		add(txtAPelis);
 
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 17));

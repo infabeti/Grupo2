@@ -98,6 +98,7 @@ public class VentanaGeneros extends JPanel {
 		txtASeleccionadas.setBounds(257, 158, 230, 139);
 		txtASeleccionadas.setEditable(false);
 		txtASeleccionadas.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		txtASeleccionadas.setEditable(false);
 		add(txtASeleccionadas);
 
 		lblHrsSabado.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -124,6 +125,7 @@ public class VentanaGeneros extends JPanel {
 		txtAGeneros.setBounds(48, 158, 171, 225);
 		txtAGeneros.setEditable(false);
 		txtAGeneros.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		txtAGeneros.setEditable(false);
 		add(txtAGeneros);
 
 	}

@@ -362,7 +362,6 @@ public class Metodos {
 			for (int i = 0; i < peliculasSabado.size(); i++) {
 				if (peliculasSabado.get(i).getTitulo().equals(nombrePeliSeleccionada) && peliculasSabado.get(i).getDia().equals("Sabado")) {
 					peliculasSabado.get(i).setElegida(true);
-					peliculasSabado.get(i).setDia("Sabado");
 					hrsPeli = peliculasSabado.get(i).getDuracion().getHours();
 					if (hrsPeli < tiempoRestantesSabado.get(Calendar.HOUR)) {
 						tiempoRestantesSabado.add(Calendar.HOUR, -(hrsPeli));
@@ -385,9 +384,8 @@ public class Metodos {
 			}
 			nombrePeliSeleccionada = peliculasGenero[opcion - 1].getTitulo();
 			for (int i = 0; i < peliculasDomingo.size(); i++) {
-				if (peliculasDomingo.get(i).getTitulo().equals(nombrePeliSeleccionada)) {
+				if (peliculasDomingo.get(i).getTitulo().equals(nombrePeliSeleccionada) && peliculasDomingo.get(i).getDia().equals("Domingo")) {
 					peliculasDomingo.get(i).setElegida(true);
-					peliculasDomingo.get(i).setDia("Domingo");
 					hrsPeli = peliculasDomingo.get(i).getDuracion().getHours();
 					if (hrsPeli < tiempoRestantesDomingo.get(Calendar.HOUR)) {
 						tiempoRestantesDomingo.add(Calendar.HOUR, -(hrsPeli));

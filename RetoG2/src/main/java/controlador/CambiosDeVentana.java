@@ -9,6 +9,8 @@ public class CambiosDeVentana {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			App.LOGGER.severe("ERROR AL PASAR 3 SEGUNDOS DESDE INICIO A LOGIN");
+			throw new RuntimeException("problemas al pasar 3 segundos");
 		}
 		cambioALogin();
 	}
@@ -18,6 +20,8 @@ public class CambiosDeVentana {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			App.LOGGER.severe("ERROR AL PASAR 2 SEGUNDOS DESDE RESUMEN A INICIO");
+			throw new RuntimeException("problemas al pasar 2 segundos");
 		}
 		cambioAInicio();
 	}

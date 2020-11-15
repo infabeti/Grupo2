@@ -66,16 +66,9 @@ public class VentanaGeneros extends JPanel {
 		txtASeleccionadas = Metodos.sacarPelis(txtASeleccionadas);
 		cmbxOpc = Metodos.llenarCmbxOpc1(cmbxOpc, txtAGeneros);
 
-		hrsSabado = new Date();
-		hrsDomingo = new Date();
-		hrsSabado.setHours(8);
-		hrsSabado.setMinutes(0);
-		hrsDomingo.setHours(6);
-		hrsDomingo.setMinutes(0);
-		patternH = "HH:mm";
-		simpleDateFormat = new SimpleDateFormat(patternH);
-		ShrsSabado = simpleDateFormat.format(hrsSabado);
-		ShrsDomingo = simpleDateFormat.format(hrsDomingo);
+		
+		ShrsSabado = Metodos.calcularHorasSabado();
+		ShrsDomingo = Metodos.calcularHorasDomingo();
 
 		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, Color.CYAN, new Color(0, 255, 255), Color.CYAN, Color.CYAN));
 		setLayout(null);
@@ -109,12 +102,12 @@ public class VentanaGeneros extends JPanel {
 
 		lblHrsSabado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblHrsSabado.setBounds(257, 315, 230, 22);
-		lblHrsSabado.setText("Sabado: " + ShrsSabado);
+		lblHrsSabado.setText(ShrsSabado);
 		add(lblHrsSabado);
 
 		lblHrsDomingo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblHrsDomingo.setBounds(257, 348, 230, 22);
-		lblHrsDomingo.setText("Domingo: " + ShrsDomingo);
+		lblHrsDomingo.setText(ShrsDomingo);
 		add(lblHrsDomingo);
 
 		lblGeneros.setFont(new Font("Tahoma", Font.PLAIN, 17));

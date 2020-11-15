@@ -15,7 +15,7 @@ public class VentanaInicio extends JPanel {
 	 * Create the panel.
 	 * @throws InterruptedException 
 	 */
-	public VentanaInicio() throws InterruptedException {
+	public VentanaInicio() {
 		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, Color.CYAN, new Color(0, 255, 255), Color.CYAN, Color.CYAN));
 		setLayout(null);
 		setBounds(150, 150, 530, 505);

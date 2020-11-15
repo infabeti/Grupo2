@@ -5,15 +5,19 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
+
+import controlador.*;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaResumen extends JPanel {
-
-	private JButton btnAtras;
-	private JButton btnAceptar;
+	private JButton btnSalir;
+	private JButton btnGeneros;
 	private JLabel lblResumen;
 	private JTextArea txtAResumen;
 
@@ -24,19 +28,29 @@ public class VentanaResumen extends JPanel {
 		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, Color.CYAN, new Color(0, 255, 255), Color.CYAN, Color.CYAN));
 		setLayout(null);
 		setBounds(150, 150, 530, 505);
-
-		btnAtras = new JButton("<--");
-		btnAceptar = new JButton("-->");
+		
 		lblResumen = new JLabel("Resumen");
 		txtAResumen = new JTextArea();
+		btnSalir = new JButton("Salir");
+		btnGeneros = new JButton("Generos");
+		
+		txtAResumen = Metodos.llenarResumen(txtAResumen);
+		
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CambiosDeVentana.cambioResumenLogin();
+			}
+		});
+		
+		btnGeneros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CambiosDeVentana.cambioAGeneros();
+			}
+		});
 
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAtras.setBounds(116, 426, 89, 29);
-		add(btnAtras);
-
-		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAceptar.setBounds(311, 426, 89, 29);
-		add(btnAceptar);
+		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnSalir.setBounds(331, 426, 89, 29);
+		add(btnSalir);
 
 		lblResumen.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblResumen.setBounds(200, 42, 108, 29);
@@ -44,7 +58,10 @@ public class VentanaResumen extends JPanel {
 
 		txtAResumen.setBounds(68, 100, 390, 278);
 		add(txtAResumen);
+		
+		btnGeneros.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnGeneros.setBounds(94, 426, 101, 29);
+		add(btnGeneros);
 
 	}
-
 }

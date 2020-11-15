@@ -57,7 +57,7 @@ public class VentanaLogin extends JPanel {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (Metodos.comprobarLogIn(txtFUser.getText(), pswFContraseña.getText())) {
-					Metodos.recogerDia(cmbXDia.getSelectedIndex());
+					Metodos.recogerDia((String)cmbXDia.getSelectedItem());
 					CambiosDeVentana.cambioAGeneros();
 				}
 					

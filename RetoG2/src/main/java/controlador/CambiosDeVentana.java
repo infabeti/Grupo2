@@ -4,9 +4,27 @@ import vista.*;
 
 public class CambiosDeVentana {
 
-	public static void cambioInicioLogin() throws InterruptedException {
-		Thread.sleep(3000);
+	public static void cambioInicioLogin(){
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		cambioALogin();
+	}
+	
+	public static void cambioResumenLogin(){
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		cambioAInicio();
+	}
+	
+	public static void cambioAInicio() {
+		VentanaInicio pan = new VentanaInicio();
+		Ventanas.cambiarVentana(pan);
 	}
 	
 	public static void cambioALogin() {

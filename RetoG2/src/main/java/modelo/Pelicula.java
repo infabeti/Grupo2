@@ -7,12 +7,14 @@ public class Pelicula {
 	private Date duracion;
 	private String genero;
 	private boolean elegida;
+	private String dia;
 
-	public Pelicula(String titulo, Date duracion, String genero, boolean elegida) {
+	public Pelicula(String titulo, Date duracion, String genero, boolean elegida, String dia) {
 		this.titulo = titulo;
 		this.duracion = duracion;
 		this.genero = genero;
 		this.elegida = elegida;
+		this.dia = dia;
 	}
 
 	public String getTitulo() {
@@ -46,11 +48,19 @@ public class Pelicula {
 	public void setElegida(boolean elegida) {
 		this.elegida = elegida;
 	}
+	
+	public String getDia() {
+		return dia;
+	}
+
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
 
 	@Override
 	public String toString() {
 		return "Pelicula [titulo=" + titulo + ", duracion=" + duracion + ", genero=" + genero + ", elegida=" + elegida
-				+ "]";
+				+ ", dia=" + dia + "]";
 	}
 
 }

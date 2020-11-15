@@ -40,6 +40,7 @@ public class VentanaPelis extends JPanel {
 		cmbxOpc = new JComboBox();
 		
 		txtAPelis = Metodos.cargarPelis(txtAPelis);
+		cmbxOpc = Metodos.llenarCmbxOpc2(cmbxOpc);
 
 		cmbxOpc.setBounds(255, 68, 117, 22);
 		add(cmbxOpc);
@@ -53,7 +54,7 @@ public class VentanaPelis extends JPanel {
 		add(txtAPelis);
 
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAtras.setBounds(128, 432, 89, 29);
+		btnAtras.setBounds(121, 413, 89, 29);
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CambiosDeVentana.cambioAGeneros();
@@ -62,9 +63,10 @@ public class VentanaPelis extends JPanel {
 		add(btnAtras);
 
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAceptar.setBounds(323, 432, 89, 29);
+		btnAceptar.setBounds(316, 413, 89, 29);
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Metodos.seleccionarPeli((int)cmbxOpc.getSelectedItem());
 				CambiosDeVentana.cambioAResumen();
 			}
 		});

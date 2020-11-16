@@ -161,6 +161,16 @@ public class Metodos {
 		peli1 = new Pelicula("Cisne negro", duracion, "Terror", false, "Domingo");
 		peliculasSabado.add(peli);
 		peliculasDomingo.add(peli1);
+		
+		generosRestantesSabado.add("Drama");
+		generosRestantesSabado.add("Sci-Fi");
+		generosRestantesSabado.add("Comedia");
+		generosRestantesSabado.add("Terror");
+		
+		generosRestantesDomingo.add("Drama");
+		generosRestantesDomingo.add("Sci-Fi");
+		generosRestantesDomingo.add("Comedia");
+		generosRestantesDomingo.add("Terror");
 	}
 
 	public static void recogerDia(String opcDia) {// recoger el dia seleccionado en el comboBox del login
@@ -262,11 +272,11 @@ public class Metodos {
 		String mins = "";
 		if (tiempoRestantesSabado.get(Calendar.HOUR) < 10) {
 			hrs = "0" + tiempoRestantesSabado.get(Calendar.HOUR);
-		}else
+		} else
 			hrs = tiempoRestantesSabado.get(Calendar.HOUR) + "";
 		if (tiempoRestantesSabado.get(Calendar.MINUTE) < 10) {
 			mins = "0" + tiempoRestantesSabado.get(Calendar.MINUTE);
-		}else
+		} else
 			mins = "" + tiempoRestantesSabado.get(Calendar.MINUTE);
 		res = "Sabado: " + hrs + ":" + mins;
 		return res;
@@ -278,11 +288,11 @@ public class Metodos {
 		String mins = "";
 		if (tiempoRestantesDomingo.get(Calendar.HOUR) < 10) {
 			hrs = "0" + tiempoRestantesDomingo.get(Calendar.HOUR);
-		}else
+		} else
 			hrs = tiempoRestantesDomingo.get(Calendar.HOUR) + "";
 		if (tiempoRestantesDomingo.get(Calendar.MINUTE) < 10) {
 			mins = "0" + tiempoRestantesDomingo.get(Calendar.MINUTE);
-		}else
+		} else
 			mins = "" + tiempoRestantesDomingo.get(Calendar.MINUTE);
 		res = "Domingo: " + hrs + ":" + mins;
 		return res;
@@ -376,6 +386,8 @@ public class Metodos {
 		Pelicula peliculasGenero[] = new Pelicula[4];
 		int cont = 0;
 		int hrsPeli = 0;
+		boolean cambioASabado = false;
+		boolean cambioADomingo = false;
 
 		if (NDia.equals("Sabado")) {
 			genero = generosRestantesSabado.get(opcGen - 1);
@@ -400,18 +412,24 @@ public class Metodos {
 								generosRestantesSabado.remove(j);
 							}
 						}
-					} else {
-						peliculasDomingo.get(i).setElegida(true);
-						tiempoRestantesDomingo.add(Calendar.HOUR, -(hrsPeli));
-						tiempoRestantesDomingo.add(Calendar.MINUTE,
-								-(peliculasDomingo.get(i).getDuracion().getMinutes()));
+					} else if (hrsPeli > tiempoRestantesSabado.get(Calendar.HOUR)) {
 						for (int j = 0; j < generosRestantesDomingo.size(); j++) {
-							if (peliculasDomingo.get(i).getGenero().equals(generosRestantesDomingo.get(j))) {
-								generosRestantesDomingo.remove(j);
+							if (genero.equals(generosRestantesDomingo.get(j))) {
+								cambioADomingo = true;
+							}
+						}
+						if (cambioADomingo) {
+							peliculasDomingo.get(i).setElegida(true);
+							tiempoRestantesDomingo.add(Calendar.HOUR, -(hrsPeli));
+							tiempoRestantesDomingo.add(Calendar.MINUTE,
+									-(peliculasDomingo.get(i).getDuracion().getMinutes()));
+							for (int j = 0; j < generosRestantesDomingo.size(); j++) {
+								if (peliculasDomingo.get(i).getGenero().equals(generosRestantesDomingo.get(j))) {
+									generosRestantesDomingo.remove(j);
+								}
 							}
 						}
 					}
-
 				}
 			}
 		} else {
@@ -438,6 +456,12 @@ public class Metodos {
 							}
 						}
 					} else if (hrsPeli < tiempoRestantesSabado.get(Calendar.HOUR)) {
+						for (int j = 0; j < generosRestantesSabado.size(); j++) {
+							if (genero.equals(generosRestantesSabado.get(j))) {
+								cambioASabado = true;
+							}
+						}
+						if (cambioASabado) {
 						peliculasSabado.get(i).setElegida(true);
 						tiempoRestantesSabado.add(Calendar.HOUR, -(hrsPeli));
 						tiempoRestantesSabado.add(Calendar.MINUTE,
@@ -448,7 +472,7 @@ public class Metodos {
 							}
 						}
 					}
-
+					}
 				}
 			}
 		}

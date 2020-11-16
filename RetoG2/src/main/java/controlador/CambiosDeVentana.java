@@ -15,7 +15,7 @@ public class CambiosDeVentana {
 		cambioALogin();
 	}
 	
-	public static void cambioResumenLogin(){
+	public static void cambioResumenFin(){
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -23,7 +23,7 @@ public class CambiosDeVentana {
 			App.LOGGER.severe("ERROR AL PASAR 2 SEGUNDOS DESDE RESUMEN A INICIO");
 			throw new RuntimeException("problemas al pasar 2 segundos");
 		}
-		cambioAInicio();
+		cambioAFin();
 	}
 	
 	public static void cambioAInicio() {
@@ -48,6 +48,11 @@ public class CambiosDeVentana {
 
 	public static void cambioAResumen() {
 		VentanaResumen pan = new VentanaResumen();
+		Ventanas.cambiarVentana(pan);
+	}
+	
+	public static void cambioAFin() {
+		VentanaFin pan = new VentanaFin();
 		Ventanas.cambiarVentana(pan);
 	}
 

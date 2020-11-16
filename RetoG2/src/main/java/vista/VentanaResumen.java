@@ -38,7 +38,7 @@ public class VentanaResumen extends JPanel {
 		
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CambiosDeVentana.cambioResumenLogin();
+				CambiosDeVentana.cambioResumenFin();
 			}
 		});
 		

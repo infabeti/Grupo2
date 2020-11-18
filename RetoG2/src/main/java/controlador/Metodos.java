@@ -30,7 +30,7 @@ public class Metodos {
 			return true;
 	}
 
-	private static void cargarTiempoDias() {
+	public static void cargarTiempoDias() {
 		Date sab = new Date();
 		Date dom = new Date();
 		tiempoRestantesSabado = Calendar.getInstance();
